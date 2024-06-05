@@ -36,19 +36,19 @@ on:
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/sounddrill31/local_manifests'
+        default: 'https://github.com/thrdchld/local_manifest'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'lineage-oxygen'
+        default: 'los20'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
-        default: "oxygen"
+        default: "X01BD"
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "lineage_oxygen"
+        default: "lineage_X01BD"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
@@ -423,9 +423,7 @@ jobs:
         # Sync the repositories
         /opt/crave/resync.sh  && \
 
-        rm -rf vendor/lineage
-        git clone https://github.com/thrdchld/android_vendor_lineage -b lineage-21.0 vendor/lineage
-        git clone https://github.com/thrdchld/signedrom -b main vendor/lineage-priv
+        git clone https://github.com/thrdchld/signedrom -b main vendor/extra
         export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
         export ALLOW_MISSING_DEPENDENCIES=true
         
