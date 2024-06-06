@@ -423,9 +423,7 @@ jobs:
         # Sync the repositories
         /opt/crave/resync.sh  && \
 
-        git clone https://github.com/thrdchld/signedrom -b los20 vendor/extra
-        export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-        export ALLOW_MISSING_DEPENDENCIES=true
+        git clone https://github.com/thrdchld/signedrom -b los20 vendor/extra \
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
