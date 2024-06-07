@@ -423,11 +423,9 @@ jobs:
         # Sync the repositories
         /opt/crave/resync.sh  && \
 
-        rm -rf vendor/lineage
-        git clone https://github.com/thrdchld/android_vendor_lineage -b lineage-21.0 vendor/lineage
-        git clone https://github.com/thrdchld/signedrom -b main vendor/lineage-priv
-        export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-        export ALLOW_MISSING_DEPENDENCIES=true
+        git clone https://github.com/thrdchld/signedrom -b main vendor/lineage-priv \
+        export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true \
+        export ALLOW_MISSING_DEPENDENCIES=true \
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
