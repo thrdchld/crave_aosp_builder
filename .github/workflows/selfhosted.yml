@@ -423,10 +423,8 @@ jobs:
         # Sync the repositories
         /opt/crave/resync.sh  && \
 
-        rm -rf vendor/everest
-        git clone https://github.com/thrdchld/vendor_everest -b qpr2 vendor/everest
-        rm -rf packages/apps/Launcher3
-        git clone https://github.com/LOSModified/android_packages_apps_Trebuchet -b lineage-21.0 packages/apps/Trebuchet
+        rm -rf packages/apps/Launcher3 \
+        git clone https://github.com/LOSModified/android_packages_apps_Trebuchet -b lineage-21.0 packages/apps/Trebuchet \
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
