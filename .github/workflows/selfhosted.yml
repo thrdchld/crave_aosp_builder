@@ -422,7 +422,7 @@ jobs:
         
         # Sync the repositories
         /opt/crave/resync.sh  && \
-
+        prebuilts/clang/host/linux-x86/clang-latest
         git clone https://github.com/thrdchld/signedrom -b los20 vendor/extra \
         
         # Set up build environment
