@@ -424,8 +424,8 @@ jobs:
         /opt/crave/resync.sh  && \
 
         rm -rf vendor/lineage
-        git clone https://github.com/thrdchld/android_vendor_lineage -b lineage-21.0 vendor/lineage \
-        git clone https://github.com/thrdchld/signedrom -b main vendor/lineage-priv \
+        git clone https://github.com/thrdchld/android_vendor_lineage_rising -b fourteen vendor/lineage \
+        git clone https://github.com/thrdchld/signedrom -b main vendor/rising/signing \
         export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true \
         export ALLOW_MISSING_DEPENDENCIES=true \
         
