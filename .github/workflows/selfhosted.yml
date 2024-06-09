@@ -421,16 +421,18 @@ jobs:
         fi \
         
         # Sync the repositories
-        /opt/crave/resync.sh  && \
+        curl https://raw.githubusercontent.com/sounddrill31/docker-images/04449990912b9d7ee594193883740037f0ac80a7/aosp/common/resync.sh | bash ; \
 
-        rm -rf packages/apps/Launcher3 \
-        git clone https://github.com/LOSModified/android_packages_apps_Trebuchet -b lineage-21.0 packages/apps/Trebuchet \
+        #rm -rf packages/apps/Launcher3
+        #git clone https://github.com/LOSModified/android_packages_apps_Trebuchet -b lineage-21.0 packages/apps/Trebuchet
+        rm -rf vendor/everest ; \
+        git clone https://github.com/thrdchld/vendor_everest -b qpr2 vendor/everest ; \
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
         export BUILD_HOSTNAME=crave ; \
         source build/envsetup.sh && \
-        repo forall -c 'git lfs install && git lfs pull && git lfs checkout' \
+        repo forall -c 'git lfs install && git lfs pull && git lfs checkout' ; \
         echo "Repository: ${{ github.repository }}"; \
         echo "Run ID: ${{ github.run_id }}"; \
 
