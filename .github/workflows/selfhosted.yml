@@ -421,19 +421,20 @@ jobs:
         fi \
         
         # Sync the repositories
-        /opt/crave/resync.sh  && \
+        curl https://raw.githubusercontent.com/sounddrill31/docker-images/04449990912b9d7ee594193883740037f0ac80a7/aosp/common/resync.sh | bash  ; \
 
-        rm -rf vendor/lineage
-        git clone https://github.com/thrdchld/android_vendor_lineage -b lineage-21.0 vendor/lineage \
-        git clone https://github.com/thrdchld/signedrom -b main vendor/lineage-priv \
-        export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true \
-        export ALLOW_MISSING_DEPENDENCIES=true \
+        # Extra
+        rm -rf vendor/lineage ; \
+        git clone https://github.com/thrdchld/android_vendor_lineage -b lineage-21.0 vendor/lineage ; \
+        git clone https://github.com/thrdchld/signedrom -b main vendor/lineage-priv ; \
+        export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true ; \
+        export ALLOW_MISSING_DEPENDENCIES=true ; \
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
         export BUILD_HOSTNAME=crave ; \
-        source build/envsetup.sh && \
-        repo forall -c 'git lfs install && git lfs pull && git lfs checkout' \
+        source build/envsetup.sh ; \
+        repo forall -c 'git lfs install && git lfs pull && git lfs checkout' ; \
         echo "Repository: ${{ github.repository }}"; \
         echo "Run ID: ${{ github.run_id }}"; \
 
