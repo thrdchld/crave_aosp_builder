@@ -421,7 +421,7 @@ jobs:
         fi \
         
         # Sync the repositories
-        /opt/crave/resync.sh  && \
+        curl https://raw.githubusercontent.com/sounddrill31/docker-images/04449990912b9d7ee594193883740037f0ac80a7/aosp/common/resync.sh | bash && \
         prebuilts/clang/host/linux-x86/clang-latest
         git clone https://github.com/thrdchld/signedrom -b los20 vendor/extra \
         
