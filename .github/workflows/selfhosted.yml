@@ -27,28 +27,28 @@ on:
           - 'LineageOS 16.0'
           - 'CyanogenMOD 14.1'
       BUILD_DIFFERENT_ROM:
-        description: "Command to initialize a different 'repo' project:"
+        description: "CrDroid A13"
         required: false
-        default: "echo 'Build Starting!'"
+        default: "repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs"
       REMOVALS:
         description: "Folders to be removed before syncing:"
         required: false
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/sounddrill31/local_manifests'
+        default: 'https://github.com/thrdchld/local_manifest_new'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'lineage-oxygen'
+        default: 'cr13'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
-        default: "oxygen"
+        default: "X01BD"
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "lineage_oxygen"
+        default: "lineage_X01BD"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
@@ -440,9 +440,15 @@ jobs:
         
         # Sync the repositories
         /opt/crave/resync.sh  && \
+
+        # Fix Clang
+        rm -rf prebuilts/clang/host/linux-x86/clang-r450784d && \
+        git clone https://gitlab.com/ImSurajxD/clang-r450784d -b master prebuilts/clang/host/linux-x86/clang-r450784d && \
+        
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
+        export TZ=Asia/Jakarta ; \
         export BUILD_HOSTNAME=crave ; \
         source build/envsetup.sh && \
 
