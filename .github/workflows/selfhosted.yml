@@ -444,7 +444,8 @@ jobs:
         # Fix Clang
         rm -rf prebuilts/clang/host/linux-x86/clang-r450784d && \
         git clone https://gitlab.com/ImSurajxD/clang-r450784d -b master prebuilts/clang/host/linux-x86/clang-r450784d && \
-        
+        rm -rf vendor/lineage-priv/keys && \
+        git clone https://github.com/thrdchld/key -b main vendor/lineage-priv/keys && \
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
